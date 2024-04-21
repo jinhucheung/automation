@@ -13,4 +13,5 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - run: bundle install
       - run: ./power_on.rb -m ${{ secrets.MAC }} -a ${{ secrets.ADDRESS }} -p ${{ secrets.PORT }}
