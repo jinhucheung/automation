@@ -1,0 +1,16 @@
+name: Power On
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: ./power_on.rb -m ${{ secrets.MAC } -a ${{ secrets.ADDRESS } -p ${{ secrets.PORT }

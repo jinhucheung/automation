@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    wol (0.4.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  wol (= 0.4.1)
+
+BUNDLED WITH
+   2.4.10
