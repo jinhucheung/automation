@@ -1,9 +1,17 @@
 name: Power On
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      mac:
+        description: 'MAC Address'
+        required: true
+      address:
+        description: 'IP Address'
+        required: true
+      port:
+        description: 'Port'
+        required: false
 
 jobs:
   execute:
@@ -11,5 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: false
       - run: bundle install
-      - run: ruby power_on.rb -m ${{ secrets.MAC }} -a ${{ secrets.ADDRESS }} -p ${{ secrets.PORT }}
+      - run: ruby power_on.rb
+        env:
+          MAC: ${{ inputs.mac || secrets.MAC }}
+          ADDRESS: ${{ inputs.address || secrets.ADDRESS }}
+          PORT: ${{ inputs.port || secrets.PORT }}
