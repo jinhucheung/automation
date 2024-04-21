@@ -2,16 +2,6 @@ name: Power On
 
 on:
   workflow_dispatch:
-    inputs:
-      mac:
-        description: 'MAC Address'
-        required: true
-      address:
-        description: 'IP Address'
-        required: true
-      port:
-        description: 'Port'
-        required: false
 
 jobs:
   execute:
@@ -24,6 +14,6 @@ jobs:
       - run: bundle install
       - run: ruby power_on.rb
         env:
-          MAC: ${{ inputs.mac || secrets.MAC }}
-          ADDRESS: ${{ inputs.address || secrets.ADDRESS }}
-          PORT: ${{ inputs.port || secrets.PORT }}
+          MAC: ${{ secrets.MAC }}
+          ADDRESS: ${{ secrets.ADDRESS }}
+          PORT: ${{ secrets.PORT }}
