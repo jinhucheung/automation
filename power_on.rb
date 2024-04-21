@@ -7,7 +7,7 @@ require "wol"
 options = {
   mac: ENV['MAC'],
   address: ENV['ADDRESS'],
-  port: ENV['port']
+  port: ENV['PORT']
 }
 
 parser = OptionParser.new do |opt|
